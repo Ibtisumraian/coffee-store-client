@@ -2,3 +2,12 @@
 @plugin "daisyui"{
     themes: light --default
 }
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+body{
+  font-family: "Raleway", sans-serif;
+}
+
+.fontRancho{
+  font-family: "Rancho", cursive;
+}
