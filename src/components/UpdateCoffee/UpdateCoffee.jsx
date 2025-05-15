@@ -4,24 +4,29 @@ import { Link } from 'react-router';
 const UpdateCoffee = () => {
     const handleUpdateCoffee = (e) => { 
         e.preventDefault()
-        const name = e.target.name.value
-        const supplier = e.target.supplier.value
-        const category = e.target.category.value
-        const chef = e.target.chef.value
-        const test = e.target.test.value
-        const details = e.target.details.value
-        const photo = e.target.photo.value
-        const coffeeDetails = {
-            name,
-            supplier,
-            category,
-            chef,
-            test,
-            details,
-            photo
-        }
-        console.log(coffeeDetails);
-        e.target.reset()
+        // const name = e.target.name.value
+        // const supplier = e.target.supplier.value
+        // const category = e.target.category.value
+        // const chef = e.target.chef.value
+        // const test = e.target.test.value
+        // const details = e.target.details.value
+        // const photo = e.target.photo.value
+        // const coffeeDetails = {
+        //     name,
+        //     supplier,
+        //     category,
+        //     chef,
+        //     test,
+        //     details,
+        //     photo
+        // }
+        const form = e.target
+        const formData = new FormData(form);
+        const newCoffee = Object.fromEntries(formData.entries());
+        console.log(newCoffee);
+
+        
+        // e.target.reset()
     }
     return (
         <div className='bg-[url("https://i.ibb.co/ccNQRfk1/11.png")] bg-cover mb-48'>
@@ -53,8 +58,8 @@ const UpdateCoffee = () => {
                                         <input name='category' type="text" className="input w-full border-none" placeholder="Enter Coffee Category" required />
                                     </fieldset>
                                     <fieldset className="fieldset">
-                                        <legend className="fieldset-legend text-xl text-[#1B1A1ACC] ">Chef</legend>
-                                        <input name='chef' type="text" className="input w-full border-none" placeholder="Enter Coffee Chef" required />
+                                        <legend className="fieldset-legend text-xl text-[#1B1A1ACC] ">Quantity</legend>
+                                        <input name='quantity' type="text" className="input w-full border-none" placeholder="Enter Coffee Quantity" required />
                                     </fieldset>
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend text-xl text-[#1B1A1ACC] ">Taste</legend>
