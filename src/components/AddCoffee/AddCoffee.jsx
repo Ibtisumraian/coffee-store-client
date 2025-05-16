@@ -1,6 +1,7 @@
 import React from 'react';
 import { IoMdArrowBack } from 'react-icons/io';
 import { Link } from 'react-router';
+import Swal from 'sweetalert2';
 
 const AddCoffee = () => {
     const handleAddCoffee = (e) => { 
@@ -8,7 +9,7 @@ const AddCoffee = () => {
         // const name = e.target.name.value
         // const supplier = e.target.supplier.value
         // const category = e.target.category.value
-        // const chef = e.target.chef.value
+        // const chef = e.target.quantity.value
         // const test = e.target.test.value
         // const details = e.target.details.value
         // const photo = e.target.photo.value
@@ -21,6 +22,8 @@ const AddCoffee = () => {
         //     details,
         //     photo
         // }
+        // console.log(`data before sending ${coffeeDetails}`);
+        
 
         const form = e.target
         const formData = new FormData(form);
@@ -36,9 +39,16 @@ const AddCoffee = () => {
                 })
                 .then(res=>res.json())
             .then(data => {
+                    if (data.insertedId) {
+                        Swal.fire({
+                        title: "Coffee added successfully!",
+                        text: "You clicked the button!",
+                        icon: "success"
+                        });
+                    }
                     console.log('after adding data to DB', data)
+                    e.target.reset()
                 })
-        // e.target.reset()
     }
     return (
         <div className='bg-[url("https://i.ibb.co/ccNQRfk1/11.png")] bg-cover mb-48'>
