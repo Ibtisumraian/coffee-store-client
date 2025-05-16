@@ -4,9 +4,43 @@ import { FaEye } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { Link } from 'react-router';
+import Swal from 'sweetalert2';
 
-const CoffeeSection = ({ coffee }) => {
+const CoffeeSection = ({ coffees, setCoffees }) => {
 
+    const handleDeleteCoffee = (id) => {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(`http://localhost:5000/coffees/${id}`, {
+                        method: 'DELETE'
+                        })
+                        .then(res=>res.json())
+                        .then(data=>{
+                            if (data.deletedCount) {
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your file has been deleted.",
+                                    icon: "success"
+                                });
+                                // window.location.reload()
+                                const deletedCoffee = coffees.filter(coffee => coffee._id !== id)
+                                setCoffees(deletedCoffee)
+                            }
+                            
+                        })
+                    
+            }
+            });
+    }
+    
     return (
         <div className='bg-[url(https://res.cloudinary.com/dd4np04jl/image/upload/v1747406265/1_qrbyph.png)] pb-40'>
             <div className='w-8/12 mx-auto '>
@@ -19,7 +53,7 @@ const CoffeeSection = ({ coffee }) => {
                 {/* coffees */}
                 <div className='grid grid-cols-2 gap-6 pt-12'>
                     {
-                        coffee.map(cfe => {
+                        coffees.map(cfe => {
                           return  <div key={cfe._id} className='bg-[#F5F4F1] rounded-xl grid grid-cols-5 pr-10'>
                         <div className='col-span-2 pl-4'>
                             <img src={cfe.photo} alt="" />
@@ -34,8 +68,8 @@ const CoffeeSection = ({ coffee }) => {
                             </div>
                             <div className='flex flex-col justify-between gap-4 '>
                                 <button className='btn bg-[#E3B577] text-white text-xl w-fit'><FaEye /></button>
-                                <Link to='/UpdateCoffee'><button className='btn bg-[#3C393B] text-white text-xl w-fit'><MdEdit /></button></Link>
-                                <button className='btn bg-[#EA4744] text-white text-xl w-fit'><MdDelete /></button>
+                                <Link to={`/UpdateCoffee/${cfe._id}`}><button  className='btn bg-[#3C393B] text-white text-xl w-fit'><MdEdit /></button></Link>
+                                <button onClick={()=>handleDeleteCoffee(cfe._id)} className='btn bg-[#EA4744] text-white text-xl w-fit'><MdDelete /></button>
                             </div>
                         </div>
                     </div>

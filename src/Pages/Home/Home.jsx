@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CoffeeSection from '../../components/CoffeeSection/CoffeeSection';
 import { useLoaderData } from 'react-router';
 
-const Home = () => {
-    const coffee = useLoaderData()
+const Home = () => { 
+    const initialCoffee = useLoaderData()
+    const [coffees, setCoffees] = useState(initialCoffee)
+    
     // const [coffee, setCoffee] = useState()
     // useEffect(() => {
     //     fetch('http://localhost:5000/coffees')
     //     .then(res=>res.json())
     //     .then(data=>setCoffee(data))
     // }, [])
-    console.log(coffee);
+    console.log(initialCoffee);
     
     return (
         <div>
@@ -68,7 +70,11 @@ const Home = () => {
             </div>
 
             <div>
-                <CoffeeSection coffee={coffee}></CoffeeSection>
+                <CoffeeSection
+                    
+                    coffees={coffees}
+                    setCoffees={setCoffees}
+                ></CoffeeSection>
             </div>
 
             <div>

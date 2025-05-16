@@ -1,7 +1,11 @@
 import React from 'react';
 import { IoMdArrowBack } from "react-icons/io";
-import { Link } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
 const UpdateCoffee = () => {
+    const singleCoffee = useLoaderData()
+    console.log(singleCoffee);
+    
     const handleUpdateCoffee = (e) => { 
         e.preventDefault()
         // const name = e.target.name.value
@@ -25,6 +29,27 @@ const UpdateCoffee = () => {
         const newCoffee = Object.fromEntries(formData.entries());
         console.log(newCoffee);
 
+        fetch(`http://localhost:5000/coffees/${singleCoffee._id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newCoffee)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if (data.modifiedCount) {
+                console.log('after updating data', data);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Coffee Has Been Updated !",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+            
+        })
         
         // e.target.reset()
     }
@@ -47,34 +72,34 @@ const UpdateCoffee = () => {
                                 <div className='grid grid-cols-2 gap-5 p-6'>
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend text-xl text-[#1B1A1ACC] ">Name</legend>
-                                        <input name='name' type="text" className="input w-full border-none" placeholder="Enter Coffee Name" required />
+                                        <input defaultValue={singleCoffee.name} name='name' type="text" className="input w-full border-none" placeholder="Enter Coffee Name" required />
                                     </fieldset>
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend text-xl text-[#1B1A1ACC] ">Supplier</legend>
-                                        <input name='supplier' type="text" className="input w-full border-none" placeholder="Enter Coffee Supplier" required />
+                                        <input defaultValue={singleCoffee.supplier} name='supplier' type="text" className="input w-full border-none" placeholder="Enter Coffee Supplier" required />
                                     </fieldset>
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend text-xl text-[#1B1A1ACC] ">Category</legend>
-                                        <input name='category' type="text" className="input w-full border-none" placeholder="Enter Coffee Category" required />
+                                        <input defaultValue={singleCoffee.category} name='category' type="text" className="input w-full border-none" placeholder="Enter Coffee Category" required />
                                     </fieldset>
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend text-xl text-[#1B1A1ACC] ">Quantity</legend>
-                                        <input name='quantity' type="text" className="input w-full border-none" placeholder="Enter Coffee Quantity" required />
+                                        <input defaultValue={singleCoffee.quantity} name='quantity' type="text" className="input w-full border-none" placeholder="Enter Coffee Quantity" required />
                                     </fieldset>
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend text-xl text-[#1B1A1ACC] ">Taste</legend>
-                                        <input name='test' type="text" className="input w-full border-none" placeholder="Enter Coffee Taste" required />
+                                        <input defaultValue={singleCoffee.test} name='test' type="text" className="input w-full border-none" placeholder="Enter Coffee Taste" required />
                                     </fieldset>
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend text-xl text-[#1B1A1ACC] ">Details</legend>
-                                        <input name='details' type="text" className="input w-full border-none" placeholder="Enter Coffee Details" required />
+                                        <input defaultValue={singleCoffee.details} name='details' type="text" className="input w-full border-none" placeholder="Enter Coffee Details" required />
                                     </fieldset>
                                   
                                 </div>
                                 <div className='px-6'>
                                     <fieldset className="fieldset">
                                         <legend className="fieldset-legend text-xl text-[#1B1A1ACC] ">Photo</legend>
-                                        <input name='photo' type="text" className="input w-full border-none" placeholder="Photo URL" required />
+                                        <input defaultValue={singleCoffee.photo} name='photo' type="text" className="input w-full border-none" placeholder="Photo URL" required />
                                     </fieldset>
                                 </div>
                                 <div className='p-6'>
