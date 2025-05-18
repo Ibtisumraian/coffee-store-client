@@ -4,7 +4,7 @@ import { Link, useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 const UpdateCoffee = () => {
     const singleCoffee = useLoaderData()
-    console.log(singleCoffee);
+    // console.log(singleCoffee);
     
     const handleUpdateCoffee = (e) => { 
         e.preventDefault()
@@ -27,7 +27,7 @@ const UpdateCoffee = () => {
         const form = e.target
         const formData = new FormData(form);
         const newCoffee = Object.fromEntries(formData.entries());
-        console.log(newCoffee);
+        // console.log(newCoffee);
 
         fetch(`http://localhost:5000/coffees/${singleCoffee._id}`, {
             method: 'PUT',
@@ -39,7 +39,7 @@ const UpdateCoffee = () => {
         .then(res=>res.json())
         .then(data=>{
             if (data.modifiedCount) {
-                console.log('after updating data', data);
+                // console.log('after updating data', data);
                 Swal.fire({
                     position: "top-end",
                     icon: "success",

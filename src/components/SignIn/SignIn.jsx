@@ -6,9 +6,9 @@ const SignIn = () => {
 
     const handleFormSubmitBtn = (e) => {
         e.preventDefault()
-        const email =  e.target.email.value
-        const password = e.target.password.value
-        console.log(email, password);
+        // const email =  e.target.email.value
+        // const password = e.target.password.value
+        // console.log(email, password);
         
        
      }

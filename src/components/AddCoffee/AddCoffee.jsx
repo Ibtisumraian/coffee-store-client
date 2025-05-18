@@ -28,7 +28,7 @@ const AddCoffee = () => {
         const form = e.target
         const formData = new FormData(form);
         const newCoffee = Object.fromEntries(formData.entries());
-        console.log(newCoffee);
+       
         
         fetch('http://localhost:5000/coffees', {
                     method: 'POST',
@@ -46,7 +46,7 @@ const AddCoffee = () => {
                         icon: "success"
                         });
                     }
-                    console.log('after adding data to DB', data)
+                    
                     e.target.reset()
                 })
     }

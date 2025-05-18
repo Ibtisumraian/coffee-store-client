@@ -16,7 +16,7 @@ const SignUp = () => {
           username,
           userPhoto
         }
-      console.log(email, password, username, userPhoto);
+      // console.log(email, password, username, userPhoto);
       createUserWithEmailPass(email, password)
         .then(() => {
           fetch('http://localhost:5000/users', {
@@ -36,8 +36,8 @@ const SignUp = () => {
 
     const handleSignInWithGoole = () => {
       signInWithGoogle()
-      .then((user) => {
-        console.log(user);
+      .then(() => {
+        // console.log(user);
         
         }).catch(error => {
         console.log(error);

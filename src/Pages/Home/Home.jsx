@@ -1,11 +1,11 @@
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import CoffeeSection from '../../components/CoffeeSection/CoffeeSection';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../components/AuthContext/AuthContext';
 
 const Home = () => { 
-    const userInfo = use(AuthContext)
-    console.log(userInfo);
+    // const userInfo = use(AuthContext)
+    // console.log(userInfo);
     
     const initialCoffee = useLoaderData()
     const [coffees, setCoffees] = useState(initialCoffee)
@@ -16,7 +16,7 @@ const Home = () => {
     //     .then(res=>res.json())
     //     .then(data=>setCoffee(data))
     // }, [])
-    console.log(initialCoffee);
+    // console.log(initialCoffee);
     
     return (
         <div>
