@@ -1,7 +1,9 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../AuthContext/AuthContext";
 const SignUp = () => {
-
+    const { createUserWithEmailPass, signInWithGoogle } = use(AuthContext);
+  
     const handleFormSubmitBtn = (e) => {
         e.preventDefault()
         console.log("form submited");
@@ -9,12 +11,38 @@ const SignUp = () => {
         const password = e.target.password.value
         const username = e.target.name.value
         const userPhoto = e.target.photo.value
+      const user = {
+          email,
+          username,
+          userPhoto
+        }
       console.log(email, password, username, userPhoto);
-      
+      createUserWithEmailPass(email, password)
+        .then(() => {
+          fetch('http://localhost:5000/users', {
+          method: 'POST',
+            headers: {
+            'content-type':'application/json'
+          },
+          body: JSON.stringify(user)
+        })
+        .then(res=>res.json())
+        .then(data=>console.log(data))
+        }).catch(error => {
+        console.log(error);
+        
+      })
     }
 
     const handleSignInWithGoole = () => {
-     
+      signInWithGoogle()
+      .then((user) => {
+        console.log(user);
+        
+        }).catch(error => {
+        console.log(error);
+        
+      })
     }
   return (
     <div className="p2 sm:p-6 flex justify-center items-center bg-[url(https://res.cloudinary.com/dd4np04jl/image/upload/v1747479896/11_t6ixm1.png)] ">
@@ -125,7 +153,7 @@ const SignUp = () => {
                   </div>  
               
               <div className="pt-8 ">
-                  <button className="btn hover:bg-[#E3B577] hover:text-white  w-full">Register</button>
+                  <button className="btn hover:bg-[#E3B577] hover:text-white  w-full">Sign Up</button>
               </div>
               </form>
               

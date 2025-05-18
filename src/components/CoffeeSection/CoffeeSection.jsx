@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { use } from 'react';
 import { SlCup } from "react-icons/sl";
 import { FaEye } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../AuthContext/AuthContext';
 
 const CoffeeSection = ({ coffees, setCoffees }) => {
-
+    const { user } = use(AuthContext)
+    const navigate = useNavigate()
     const handleDeleteCoffee = (id) => {
-            Swal.fire({
+          if (user) {
+              Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
                 icon: "warning",
@@ -38,9 +41,28 @@ const CoffeeSection = ({ coffees, setCoffees }) => {
                         })
                     
             }
-            });
+                });
+              
+          } else {
+              alert('You need to sign in to Delete this item')
+              navigate('/SignIn')
+          }
     }
     
+    const handleRout = (routs) => {
+        
+        if (!user) {
+           return navigate('/SignIn')
+        }
+        navigate(routs)
+    }
+
+    const addCoffee = () => {
+         if (!user) {
+           return navigate('/SignIn')
+        }
+        navigate('/AddCoffee')
+    }
     return (
         <div className='bg-[url(https://res.cloudinary.com/dd4np04jl/image/upload/v1747406265/1_qrbyph.png)] pb-40'>
             <div className='w-8/12 mx-auto '>
@@ -48,7 +70,7 @@ const CoffeeSection = ({ coffees, setCoffees }) => {
                 <div className='text-center flex flex-col gap-4 justify-center items-center mt-28'>
                     <p>--- Sip & Savor ---</p>
                     <h1 className='text-[#331A15] text-5xl fontRancho font-bold'>Our Popular Products</h1>
-                    <Link to='/AddCoffee'><button className='btn w-fit hover:text-white fontRancho hover:bg-[#E3B577] border-2 border-[#331A15] flex gap-3 '>Add Coffee <span className='text-[#331A15] text-base'><SlCup /></span></button></Link>
+                   <button onClick={addCoffee} className='btn w-fit hover:text-white fontRancho hover:bg-[#E3B577] border-2 border-[#331A15] flex gap-3 '>Add Coffee <span className='text-[#331A15] text-base'><SlCup /></span></button>
                 </div>
                 {/* coffees */}
                 <div className='grid grid-cols-2 gap-6 pt-12'>
@@ -67,8 +89,8 @@ const CoffeeSection = ({ coffees, setCoffees }) => {
                                 
                             </div>
                             <div className='flex flex-col justify-between gap-4 '>
-                                <Link to={`/CoffeeDetails/${cfe._id}`}><button className='btn bg-[#E3B577] text-white text-xl w-fit'><FaEye /></button></Link>
-                                <Link to={`/UpdateCoffee/${cfe._id}`}><button  className='btn bg-[#3C393B] text-white text-xl w-fit'><MdEdit /></button></Link>
+                                <button onClick={()=>handleRout(`/CoffeeDetails/${cfe._id}`)} className='btn bg-[#E3B577] text-white text-xl w-fit'><FaEye /></button>
+                                <button  onClick={()=>handleRout(`/UpdateCoffee/${cfe._id}`)} className='btn bg-[#3C393B] text-white text-xl w-fit'><MdEdit /></button>
                                 <button onClick={()=>handleDeleteCoffee(cfe._id)} className='btn bg-[#EA4744] text-white text-xl w-fit'><MdDelete /></button>
                             </div>
                         </div>
