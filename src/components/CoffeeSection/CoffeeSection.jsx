@@ -67,7 +67,7 @@ const CoffeeSection = ({ coffees, setCoffees }) => {
                                 
                             </div>
                             <div className='flex flex-col justify-between gap-4 '>
-                                <button className='btn bg-[#E3B577] text-white text-xl w-fit'><FaEye /></button>
+                                <Link to={`/CoffeeDetails/${cfe._id}`}><button className='btn bg-[#E3B577] text-white text-xl w-fit'><FaEye /></button></Link>
                                 <Link to={`/UpdateCoffee/${cfe._id}`}><button  className='btn bg-[#3C393B] text-white text-xl w-fit'><MdEdit /></button></Link>
                                 <button onClick={()=>handleDeleteCoffee(cfe._id)} className='btn bg-[#EA4744] text-white text-xl w-fit'><MdDelete /></button>
                             </div>
