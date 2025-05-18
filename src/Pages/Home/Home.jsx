@@ -12,7 +12,7 @@ const Home = () => {
     
     // const [coffee, setCoffee] = useState()
     // useEffect(() => {
-    //     fetch('http://localhost:5000/coffees')
+    //     fetch('https://coffee-store-server-j5g1e6ncc-ibtisumraians-projects.vercel.app/coffees')
     //     .then(res=>res.json())
     //     .then(data=>setCoffee(data))
     // }, [])

@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
         {
             index: true,
             hydrateFallbackElement:<Spinner></Spinner>,
-            loader:()=>fetch('http://localhost:5000/coffees'),
+            loader:()=>fetch('https://coffee-store-server-mu-rosy.vercel.app/coffees'),
             Component: Home,
         },
         {
@@ -25,12 +25,12 @@ export const router = createBrowserRouter([
         },
         {
           path: '/UpdateCoffee/:id',
-          loader:({params})=>fetch(`http://localhost:5000/coffees/${params.id}`),
+          loader:({params})=>fetch(`https://coffee-store-server-mu-rosy.vercel.app/coffees/${params.id}`),
           Component: UpdateCoffee
         },
         {
           path: '/CoffeeDetails/:id',
-          loader:({params})=>fetch(`http://localhost:5000/coffees/${params.id}`),
+          loader:({params})=>fetch(`https://coffee-store-server-mu-rosy.vercel.app/coffees/${params.id}`),
           Component: CoffeeDetails
         },
         {

@@ -19,7 +19,7 @@ const SignUp = () => {
       // console.log(email, password, username, userPhoto);
       createUserWithEmailPass(email, password)
         .then(() => {
-          fetch('http://localhost:5000/users', {
+          fetch('https://coffee-store-server-mu-rosy.vercel.app/users', {
           method: 'POST',
             headers: {
             'content-type':'application/json'
