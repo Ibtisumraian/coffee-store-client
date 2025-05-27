@@ -32,11 +32,11 @@ const Home = () => {
                     <div className=" text-neutral-content text-start ">
                         
                         <div className=" flex flex-col items-start mr-60 ">
-                        <h1 className="mb-5 text-4xl font-bold fontRancho">Would you like a Cup of Delicious Coffee?</h1>
+                        <h1 className="mb-5 text-6xl font-bold fontRancho">Would you like a Cup of Delicious Coffee?</h1>
                         <p className="mb-5 text-sm">
                             It's coffee time - Sip & Savor - Relaxation in every sip! Get the nostalgia back!! Your companion of <br /> every moment!!! Enjoy the beautiful moments and make them memorable.
                         </p>
-                        <button className="btn bg-transparent border-2 border-white text-white hover:bg-[#E3B577] hover:border-2 hover:border-[#331A15] shadow-none fontRancho">Learn More</button>
+                        <button className="btn text-md bg-transparent border-2 border-white text-white hover:bg-[#E3B577] hover:border-2 hover:border-[#331A15] shadow-none fontRancho">Learn More</button>
                         </div>
                     </div>
                 </div>

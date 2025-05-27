@@ -7,6 +7,7 @@ import Spinner from "../components/Spinner/Spinner";
 import CoffeeDetails from "../components/CoffeeDetails/CoffeeDetails";
 import SignUp from "../components/SignUp/SignUp";
 import SignIn from "../components/SignIn/SignIn";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -21,17 +22,17 @@ export const router = createBrowserRouter([
         },
         {
             path: "/AddCoffee",
-            Component: AddCoffee,
+            element: <PrivateRoute><AddCoffee></AddCoffee></PrivateRoute>
         },
         {
           path: '/UpdateCoffee/:id',
           loader:({params})=>fetch(`https://coffee-store-server-mu-rosy.vercel.app/coffees/${params.id}`),
-          Component: UpdateCoffee
+          element: <PrivateRoute><UpdateCoffee></UpdateCoffee></PrivateRoute>
         },
         {
           path: '/CoffeeDetails/:id',
           loader:({params})=>fetch(`https://coffee-store-server-mu-rosy.vercel.app/coffees/${params.id}`),
-          Component: CoffeeDetails
+          element: <PrivateRoute><CoffeeDetails></CoffeeDetails></PrivateRoute>
         },
         {
           path: '/SignUp',

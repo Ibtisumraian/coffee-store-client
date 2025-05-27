@@ -1,19 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { use } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router';
+import { AuthContext } from '../AuthContext/AuthContext';
 
 
 const SignIn = () => {
+    const { signInWithGoogle, signUpUser } = use(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const handleFormSubmitBtn = (e) => {
         e.preventDefault()
-        // const email =  e.target.email.value
-        // const password = e.target.password.value
+        const email =  e.target.email.value
+        const password = e.target.password.value
         // console.log(email, password);
-        
+        signUpUser(email, password)
+        .then(data=>{
+            console.log(data);
+            navigate(location?.state || '/')
+        }).catch(error => {
+            console.log(error)
+            
+        })
        
      }
     const handleSignInWithGoole = () => {
+        signInWithGoogle()
+      .then(() => {
+        // console.log(user);
     
+          navigate(location?.state || '/')
+        }).catch(error => {
+        console.log(error);
+        
+      })
     }
     return (
         <div className='sm:p-4 flex justify-center items-center bg-[url(https://res.cloudinary.com/dd4np04jl/image/upload/v1747479896/11_t6ixm1.png)]'>
