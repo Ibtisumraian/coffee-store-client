@@ -30,17 +30,18 @@ Welcome to the **Coffee Store** client-side application — a beautifully crafte
 
 ---
 
-## 📦 Dependencies
+## 🧰 NPM Packages Used
 
+These are packages required for the application to run:
 
-  "@tailwindcss/vite": "^4.1.6",
-  "firebase": "^11.7.3",
-  "react": "^19.1.0",
-  "react-dom": "^19.1.0",
-  "react-icons": "^5.5.0",
-  "react-router": "^7.6.0",
-  "sweetalert2": "^11.6.13",
-  "tailwindcss": "^4.1.6"
+- **@tailwindcss/vite@^4.1.6** – Tailwind CSS integration with Vite
+- **firebase@^11.7.3** – User authentication and backend integration
+- **react@^19.1.0** – Core React library
+- **react-dom@^19.1.0** – React DOM renderer
+- **react-icons@^5.5.0** – Icon library for React applications
+- **react-router@^7.6.0** – Declarative routing for React
+- **sweetalert2@^11.6.13** – Beautiful alert and confirmation dialogs
+- **tailwindcss@^4.1.6** – Utility-first CSS framework for rapid UI development
 
 ---
 
