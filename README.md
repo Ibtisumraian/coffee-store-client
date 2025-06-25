@@ -1,12 +1,63 @@
-# React + Vite
+# ☕ Coffee Store - Client Side
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Coffee Store** client-side application — a beautifully crafted, responsive front-end built using modern web technologies. This app showcases a smooth user experience for browsing, adding, updating, and deleting coffee items.
 
-Currently, two official plugins are available:
+## 🚀 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 [Visit Coffee Store](https://espresso-emporium-c8f01.web.app/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Technologies Used
+
+- ⚛️ **React**
+- 🎨 **Tailwind CSS**
+- 🌐 **React Router DOM**
+- 📦 **Axios / Fetch API**
+- 💅 **DaisyUI / Custom CSS**
+- 🔒 **Authentication (if applicable)**
+
+---
+
+## 📸 Features
+
+- ✅ View a list of all coffee products
+- ➕ Add a new coffee item with name, supplier, taste, etc.
+- ✏️ Update existing coffee item details
+- ❌ Delete coffee with confirmation prompt
+- 🧭 Clean navigation and responsive layout
+- 💬 Toasts or alerts for feedback (SweetAlert2 or Toastify)
+
+---
+
+## 📦 Dependencies
+
+
+  "@tailwindcss/vite": "^4.1.6",
+  "firebase": "^11.7.3",
+  "react": "^19.1.0",
+  "react-dom": "^19.1.0",
+  "react-icons": "^5.5.0",
+  "react-router": "^7.6.0",
+  "sweetalert2": "^11.6.13",
+  "tailwindcss": "^4.1.6"
+
+---
+
+## 📄 License
+
+This project is for educational purposes only. All rights reserved by the developer.
+
+---
+
+## 👤 Author
+
+**Ibtisum Raian**  
+Email: ibtisumraian@gmail.com  
+GitHub: [Ibtisumraian](https://github.com/Ibtisumraian)
+
+---
+
+
+
+## 🔐 Environment Variables
